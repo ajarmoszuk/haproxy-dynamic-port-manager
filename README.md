@@ -11,6 +11,19 @@ This tool continuously scans a specified port range on the local machine, detect
 - Dynamic port forwarding with support for PROXY protocol
 - Any scenario where services come online with unpredictable port assignments
 
+## Why This Was Built
+
+This project was originally developed to solve a specific challenge at FreeServers.pl (FSRV.pl), a platform that provides freemium Minecraft server hosting. The platform needed to efficiently manage thousands of user-created game servers across multiple nodes, each with dynamic port assignments.
+
+The traditional approach of manually updating HAProxy configurations whenever servers came online or went offline wasn't feasible at this scale, and we needed it to assign SRV records at domain level. This tool provided an automated solution that:
+
+1. Continuously monitored for active game server ports
+2. Dynamically updated the HAProxy configuration in real-time
+3. Ensured traffic was properly routed to the correct node and port
+4. Maintained high availability even as servers were created and destroyed
+
+While originally built for Minecraft servers, the tool has been generalized to work with any service that requires dynamic port management.
+
 ## Features
 
 - Fast, efficient port scanning using nmap
